@@ -343,3 +343,45 @@ function mkdirfix (name, opts, cb) {
     }
   })
 }
+
+function deadCode (name, opts, cb) {
+  mkdirp(name, {fs: opts.xfs}, function (err, made) {
+    if (!err && made && opts.own) {
+      chownr(made, opts.uid, opts.gid, cb)
+    } else {
+      cb(err)
+    }
+  })
+}
+
+function commentedOutCode (name, opts, cb) {
+  //mkdirp(name, {fs: opts.xfs}, function (err, made) {
+  //  if (!err && made && opts.own) {
+  //    chownr(made, opts.uid, opts.gid, cb)
+  //  } else {
+  //    cb(err)
+  //  }
+  //})
+}
+
+function duplicateCode (name, opts, cb) {
+  let x = 1;
+  if (x <0){
+    for (let i = 0; i < 10; i++)
+    {
+      x = x +i;
+    }
+  }
+  if (x ==1){
+    for (let i = 0; i < 10; i++)
+    {
+      x = x +i;
+    }
+  }
+  if (x >1){
+    for (let i = 0; i < 10; i++)
+    {
+      x = x +i;
+    }
+  }
+}
